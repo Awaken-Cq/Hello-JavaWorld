@@ -19,13 +19,13 @@ public class Car {
 
 	public void speedDown() {
 	speed -= 10;
-
+	if(speed < 0)
+		stop();
 	}
 
 
 	public void stop() {
 	speed = 0;
-
 	}
 
 
