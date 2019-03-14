@@ -9,7 +9,7 @@
 public class Circle {
 		
 		int radius;
-		double pie = 3.14;
+		double pie = Math.PI;
 		double calcRound;
 		double calcArea;
 
@@ -27,7 +27,7 @@ public class Circle {
 		}
 		
 		public void calcArea(){
-			calcArea = (radius * radius) * pie;
+			calcArea = Math.pow(radius, 2) * pie;
 		}
 
 		

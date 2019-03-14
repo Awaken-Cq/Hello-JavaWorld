@@ -13,29 +13,35 @@ public class Marine {
 		
 		int hp;
 		int mode;
+		int power;
 
 		public Marine(){
 			hp = 100;
 			mode = 0;
+			power = 10;
 			
 		}
 		
 		public void attack(Marine a, int count){
-			if(mode == 0){
-			a.hp -= count*10;
-			}else{
-			a.hp -= count*15;
-			}
+			for(int i =0; i < count; i++)
+				a.hp -= power;
 		}
 
-		public void mode(Marine a,int b){
+		public void mode(){
 			
-			if(a.mode == 0 &&a.hp >= 40){
-				a.mode = b;
-				a.hp -= 20;
+			if(mode == 0 && hp >= 40){
+				mode = 1;
+				hp -= 25;
+				power = 15;
 			} else {
+				mode = 0;
+				power = 10;
 				System.out.println("경고 : 모드변경불가");
 			}
 		
+		}
+// 문자열에서 숫자를 출력하는방법 숫자 + ""
+		String getStatus() {
+			return hp < 0 ? "die" : hp+"" ;
 		}
 }

@@ -5,32 +5,34 @@ public class StarCraft {
 		Marine my = new Marine();
 		Marine com = new Marine();
 
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
+
 		my.attack(com,count);
 		System.out.println("내가 적을 " + count + "회 공격!");
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + com.hp);
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
 //		
 		count = 4;
 		com.attack(my,count);
 		System.out.println("적이 나를 " + count + "회 공격!");
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + com.hp);
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
 //		
 		System.out.println("모드 변경!!!");
-		my.mode(my,1);
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + com.hp);
+		my.mode();
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
 
 		count = 3;
 		my.attack(com,count);
 		System.out.println("내가 적을 " + count + "회 공격!");
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + com.hp);
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
 
 		System.out.println("모드 변경!!!");
-		my.mode(my,1);
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + com.hp);
+		my.mode();
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus());
 
-		count = 3;
+		count = 4;
 		my.attack(com,count);
 		System.out.println("내가 적을 " + count + "회 공격!");
-		System.out.println("내 체력 : "+ my.hp + " : 적 체력 : " + "die\n" + "win");
+		System.out.println("내 체력 : "+ my.getStatus() + " : 적 체력 : " + com.getStatus() + "\nwin");
 
 
 
@@ -57,7 +59,7 @@ public class StarCraft {
 
 		//경고 : 모드 변경 불가.
 		//내체력 : 35 적체력 : 35
-		count = 3;
+		count = 4;
 		System.out.println("내가 적을 " + count + "회 공격!");
 
 
