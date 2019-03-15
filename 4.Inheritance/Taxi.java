@@ -64,16 +64,26 @@ public class Taxi extends Car{
 		return price = basicPrice;
 	}
 
-	int calcPrice(int km){
+	public int calcPrice(int km){
 		price = basicPrice + (km * cPrice);
 		return price;
 	}
 
-	int sumPrice(){
+	public int sumPrice(){
 		totalPrice += price;
 		basicPrice = 0;
 		return price =0;
 		
+	}
+
+	@Override
+	public int speedUp(int speed){
+		speed = super.speedUp(speed);
+		if(speed > 150)
+			this.speed = 150;
+		return this.speed;
+
+	
 	}
 
 
@@ -83,5 +93,9 @@ public class Taxi extends Car{
 	String info(){
 		return maker + "에서 만든 " + color + " " + carName;
 	}
-
+	
+	@Override
+	public String toString(){
+			return super.toString() + "택시";
+		}
 }

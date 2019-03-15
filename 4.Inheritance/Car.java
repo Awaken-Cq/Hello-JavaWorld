@@ -18,7 +18,7 @@ public class Car {
 	}
 
 
-	public int speedUp(int speed) {
+	int speedUp(int speed) {
 		this.speed += speed;
 		return this.speed;
 	}
@@ -35,8 +35,24 @@ public class Car {
 		speed = 0;
 	}
 
-	String info() {
-		return "차이름 : " + carName + "  색상 : " 
-			+ color + "  제조사 : " + maker;
-	}
+	
+//toString의 원래 기능은 주소를 문자열로 반환 그것을 재정의하여
+//내가 원하는 문자열 반환 중요한 것은 toString은 문자열로 반환한다는 것.
+	@Override
+	public String toString(){
+			return maker + "에서 만든 " + color + "  " + carName;
+		}
+		
+	@Override
+		public boolean equals(Object obj){
+			Car car = (Car) obj;
+			//if(carName == car.carName)
+			if(carName.equals(car.carName))
+			//""일경우는 true, enw String("")일 경우는 false
+			return true;
+			return false;
+		}
+
+
 }
+
