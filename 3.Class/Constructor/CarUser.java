@@ -31,13 +31,16 @@ public class CarUser {
 		
 		System.out.println("car4의 속도를 85 증가!!!");
 		int speed = car4.speedUp(85);	//	변수명은 상관없음.(다만 특징기술)
-
-        car4.speedUp();
-		car4.speedUp();
-		car4.speedUp();
 		System.out.println("car4의 속도 : " + speed);	//	계기판 속도
 		System.out.println("car4의 속도 : " + car4.speed);	//	car4의 속도
+      
+
 
 
 	}
 }
+/*
+  car4.speedUp();
+		car4.speedUp();
+		car4.speedUp();
+		*/

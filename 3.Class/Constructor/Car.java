@@ -58,8 +58,8 @@ public class Car {
 	}
 //같은 메소드가 있기 때문에 인자값을 넣어 분류하여 넣은 값에 따른 리턴값을 반환
 	public int speedUp(int speed) {
-		this.speed += speed;
-		return this.speed;
+		speed += speed;
+		return speed;
 	}
 
 	public void speedDown(){
