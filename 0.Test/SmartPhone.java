@@ -23,6 +23,7 @@ public class SmartPhone {
 	}
 	
 	
+	/*
 	public void info(){
 		if(discountRate == 0)
 		System.out.println(name + " [" + maker + "]\n가격 : " + price); 
@@ -30,5 +31,15 @@ public class SmartPhone {
 		System.out.println(name + " [" + maker + "]\n가격 : " + price 
 			+ "\n할인가격 : " + calculateDiscount());
 	}
-	
+	*/
+
+	@Override
+		public String toString(){
+		String str = name + " [" + maker + "]\n가격 : " + price;
+		if(discountRate != 0)
+			str += "\n할인가격 : " + calculateDiscount();
+		str += "\n---------------------";
+		return str;
+	}
+
 }

@@ -78,9 +78,14 @@ public class Test {
 	}
 
 	private void menu() throws Exception {
+		int menu;
 		
-		int menu = Integer.parseInt(in.readLine());
-		while(menu == 0)
+		do{
+		System.out.print("게임 계속(1), 종료(0)을 입력하세요. : ");
+		menu = Integer.parseInt(in.readLine());
+		}
+		while(menu>1);
+		if(menu == 0)
 			exit();
 	}
 
@@ -106,8 +111,7 @@ public class Test {
 			my = Integer.parseInt(t.in.readLine());
 		}
 		t.comRandom();
-		t.game(my);
-			System.out.print("게임 계속(1), 종료(0)을 입력하세요. : ");
+		t.game(my);	
 		t.menu();
 		}
 	}

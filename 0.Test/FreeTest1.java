@@ -8,7 +8,7 @@ public class FreeTest1 {
 		int basu2 = 0;
 		int basu3 = 0;
 		int basu5 = 0;
-		int number = 20;
+		int number = 30;
 
 		System.out.println("반복 횟수를 입력하세요 : " + number);
 		for(int i=1;i<=number;i++){
