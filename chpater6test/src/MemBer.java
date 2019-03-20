@@ -24,10 +24,9 @@ public class MemBer {
 	}
 
 	public String logout(String id){
-		if(this.id == id)
+		
 		return "로그아웃 되었습니다.";
-		else			
-		return "로그아웃 되었습니다.22";//아이디가 같지않으면 로그아웃불가능?!
+		
 	}
 	
 }

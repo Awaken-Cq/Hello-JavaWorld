@@ -1,26 +1,29 @@
 public class Printer {
-
-	int i;
-	boolean b;
-	double d;
-	String s;
-
-	public Printer(){
+	
+	public int i;
+	public boolean b;
+	public double d;
+	public String s;
+	
 		
+	public void println(int z) {
+		i = z;
+		System.out.println(i); 
 	}
-
-	public String println(int a){
-		return System.out.println(a+"");
+	
+	public void println(boolean x) {
+		b = x;
+		System.out.println(b); 
 	}
-	public String println(boolean b){
-		return System.out.println(b+"");
+	
+	public void println(double y) {
+		d = y;
+		System.out.println(d); 		
 	}
-	public String println(double c){
-		return System.out.println(c+"");
+	
+	public void println(String v) {
+		s = v;
+		System.out.println(s); 
 	}
-	public String println(String d){
-		
-		return System.out.println(d+"");
-	}
-
+	
 }
