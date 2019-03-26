@@ -14,15 +14,16 @@
 	 * 
 	 * 
 	 */
-
+//한식, 중식, 일식 등을 번호를 입력받아서 출력하기.
 	
 
 	public class RandomFood {
 		private static int k;
 		private static int kf;
 		
-		private static String kList[] = { "한식", "한식", "한식", "한식", "한식"
-				, "한식", "한식", "한식", "한식", "중식" };
+		//public Static String getKlis
+		
+		private static String kList[] = { "한식", "중식" };
 
 		private static String kfList[] = { "직화구이", "돈까스", "닭칼국수", "밥볶이", "돼지고기김치찌개",
 				"국밥", "문배동 육칼", "설렁탕", "뼈다귀해장국", "동태찌개", "부대찌개" };
@@ -42,7 +43,7 @@
 		}
 
 		public static void main(String[] args) {
-			for(int i = 0; i<100;i++)
+		
 			System.out.println(kfRandom());
 
 		}

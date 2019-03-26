@@ -19,116 +19,106 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class NumberBaseBall  {
+public class NumberBaseBall {
 
 	private static int my[] = new int[3];
 	private int com[] = new int[3];
 	BufferedReader in;
 	private int cnt = 0;
-	
-	
-	
-	
-	
+
 	private void comRandom() {
-		while(com[0] == 0) {
-		com[0] = (int)(Math.random()*10); // 1~9
+		while (com[0] == 0) {
+			com[0] = (int) (Math.random() * 10); // 1~9
 		}
 		do {
-		com[1] = (int)(Math.random()*10); // com[0] != , 0~9
-		}
-		while(com[0] == com[1]);
+			com[1] = (int) (Math.random() * 10); // com[0] != , 0~9
+		} while (com[0] == com[1]);
 		do {
-		com[2] = (int)(Math.random()*10); // com[0] , com[1] != , 0~9
-		}
-		while(com[0] == com[2] || com[1] == com[2]);
-		
-		
+			com[2] = (int) (Math.random() * 10); // com[0] , com[1] != , 0~9
+		} while (com[0] == com[2] || com[1] == com[2]);
+
 	}
-	
-	
+
 	private void game() throws NumberFormatException, IOException {
-		while(true) {
-			
-			int strike = 0;
-			int ball = 0;
+		int strike;
+		int ball;
+		while (true) {
+			strike = 0;
+			ball = 0;
 			
 			System.out.println("숫자입력 : ");
-			int myNum = getNumber();//149
-			my[0] = myNum/100;//1
+			int myNum = getNumber();// 149
+			my[0] = myNum / 100;// 1
 //			my[1] = Math.round((myNum%100)/10);//4
-			my[1] = (myNum/10)%10;	//4
-			my[2] = myNum%10;//9
-			
-			//숫자와 자리수 비교
-			cnt++;
-			
+			my[1] = (myNum / 10) % 10; // 4
+			my[2] = myNum % 10;// 9
+
+			// 숫자와 자리수 비교
+
 			for (int i = 0; i < 3; i++) {
-				for(int y = 0; y <3; y++) {
-					if(my[i] == com[y] && i == y)
+				for (int y = 0; y < 3; y++) {
+					if (my[i] == com[y] && i == y)
 						strike++;
-					else if(my[i] == com[y]) 
+					else if (my[i] == com[y])
 						ball++;
+					// if, if else가 더 효율적인듯.
 				}
 			}
-			System.out.println(my[0] + "" + my[1] + "" 
-			+ my[2] + "==" + com[0] + com[1] + com[2]);
-			//결과
-			if(strike != 3) {
+			cnt++; // 게임이 정상적으로 돌았을때 카운트를 올리는게 이치에 맞다.
+
+			System.out.println(my[0] + "" + my[1] + "" + my[2] + "==" + com[0] + com[1] + com[2]);
+			// 결과
+			if (strike != 3) {
 				System.out.println("strike : " + strike + "\tball : " + ball);
-			}else {
+			} else {
 				System.out.println(myNum + "은 " + cnt + "번째 만에 정답입니다!!");
 				exit();
 			}
 		}
-		
-		
+
 	}
-	
+
 	public NumberBaseBall() {
 		comRandom();
 		in = new BufferedReader(new InputStreamReader(System.in));
-		
+
 	}
 
-	
 	private int getNumber() {
 		int num = 0;
 		try {
 			num = Integer.parseInt(in.readLine());
-			} catch(NumberFormatException e) {
-				e.printStackTrace();
-			} catch (IOException e){
-				e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-			
-			return num;
+
+		return num;
 	}
 
-	private void exit() throws NumberFormatException, IOException  {
-		while(true) {
+	// exit()메소드를 따로 만들필요없이, game()안에서 짜도 문제가 없다. 오히려 나은가???
+	private void exit() throws NumberFormatException, IOException {
+		while (true) {
 			System.out.println("다시 하시겠습니까? 다시(1), 종료(0)");
 			int e = Integer.parseInt(in.readLine());
-			if(e == 1) {
+			if (e == 1) {
 				cnt = 0;
 				comRandom();
 				break;
-			}
-			else if (e == 0) {
+			} else if (e == 0) {
 				System.out.println("프로그램이 종료됩니다.");
 				System.exit(0);
-			}else {
-			System.out.println("입력이 옳지 않습니다.");
+			} else {
+				System.out.println("입력이 옳지 않습니다.");
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		NumberBaseBall nbb = new NumberBaseBall();
-		nbb.game();	
-	
+		nbb.game();
+
 	}
-		
+
 }
-	
