@@ -31,7 +31,7 @@ public class StringBufferTest1 {
 		cap = sb1.capacity();
 		System.out.println("크기 : " + cap + "\t문자열 수 : " + sb1.length());
 
-//		insert
+		//insert(어디부터,"넣을문자")
 		sb1.insert(10,"@@@");
 		System.out.println("5. sb1 == " + sb1);
 		//	delete(어디부터,어디전까지)	10부터 12전까지 지워짐.(=subString)
