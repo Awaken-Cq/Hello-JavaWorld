@@ -14,76 +14,64 @@ import java.awt.*;
  * 
  */
 
-
 public class ItemTest extends Frame {
 
 	Panel pN = new Panel();
 	Panel pS = new Panel();
-	CheckboxGroup time = new CheckboxGroup();
-	Checkbox mor = new Checkbox("아침", time, false);
-	Checkbox aft = new Checkbox("점심", time, false);
-	Checkbox eve = new Checkbox("저녁", time, false);
-	
-	Checkbox app = new Checkbox("사과");
+	CheckboxGroup cg = new CheckboxGroup();
+	Checkbox mor = new Checkbox("아침", cg, true);
+	Checkbox aft = new Checkbox("점심", cg, false);
+	Checkbox eve = new Checkbox("저녁", cg, false);
+
+	Checkbox app = new Checkbox("사과", true);
 	Checkbox bana = new Checkbox("바나나");
 	Checkbox straw = new Checkbox("딸기");
-	
+
 	TextArea ta = new TextArea();
-			
+
 	Choice ch = new Choice();
-	
+
 	Button exit = new Button("종료");
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public ItemTest(){
-		
-		pN.setLayout(new GridLayout(2,3,10,0));
+
+	public ItemTest() {
+
+		pN.setLayout(new GridLayout(2, 3, 10, 0));
+		mor.setBackground(Color.yellow);
 		pN.add(mor);
+		aft.setBackground(Color.red);
 		pN.add(aft);
+		eve.setBackground(Color.PINK);
 		pN.add(eve);
-		
+
 		pN.add(app);
+		app.setBackground(Color.red);
 		pN.add(bana);
+		bana.setBackground(Color.yellow);
 		pN.add(straw);
-		
-		
-		
-		
-		pS.setLayout(new BorderLayout());
-		pS.add(ch,"Center");
-		ch.setSize(100,20);
+		straw.setBackground(Color.red);
+
+		pS.setLayout(new BorderLayout(10, 0));
 		ch.add("아침");
-		
 		ch.add("점심");
 		ch.add("저녁");
-		pS.add(exit,"East");
 		
-		
-		add(pN,"North");
-		add(ta,"Center");
-		add(pS,"South");
-		
-		
-		setBounds(300,200,300,500);
+		ch.setSize(100, 20);
+		pS.add(ch, "Center");
+		exit.setBackground(Color.CYAN);
+		pS.add(exit, "East");
+
+		add(pN, "North");
+		add(ta, "Center");
+		add(pS, "South");
+
+		setBounds(300, 200, 300, 500);
 		setVisible(true);
-		
+
 	}
-	
-	
-	
-	
+
 	public static void main(String[] args) {
-		
+
 		new ItemTest();
-		
-		
+
 	}
 }

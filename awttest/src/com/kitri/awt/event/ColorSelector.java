@@ -12,11 +12,13 @@
  * 전체프레임은 그리드로
  */
 
-package com.kitri.awt.design;
+package com.kitri.awt.event;
 
 import java.awt.*;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 
-public class ColorSelector extends Frame {
+public class ColorSelector extends Frame implements AdjustmentListener {
 //선언
 	Panel pW = new Panel();
 	Panel pE = new Panel();
@@ -95,18 +97,15 @@ public class ColorSelector extends Frame {
 		pES.add(colorL, "Center");
 		pES.add(ok, "East");
 		
-		
+		sbR.addAdjustmentListener(this);
+		sbG.addAdjustmentListener(this);
+		sbB.addAdjustmentListener(this);
 		
 //		화면구현
-		setBounds(300, 200, 300, 500);
+		setBounds(300, 200, 500, 500);
 		setVisible(true);
 		
-//		횡한 화면 채우기(스크롤바 기준치와 같은 값을 보여주자)
-		int r = sbR.getValue();
-		int g = sbG.getValue();
-		int b = sbB.getValue();
-		colorP.setBackground(new Color(r, g, b));
-		colorL.setText("r = " + r + " g = " + g+ " b = " + b);
+		changeColor();
 		
 		
 		
@@ -115,5 +114,18 @@ public class ColorSelector extends Frame {
 	public static void main(String[] args) {
 		new ColorSelector();
 
+	}
+
+	@Override
+	public void adjustmentValueChanged(AdjustmentEvent e) {
+		changeColor();
+	}
+
+	private void changeColor() {
+		int r = sbR.getValue();
+		int g = sbG.getValue();
+		int b = sbB.getValue();
+		colorP.setBackground(new Color(r, g, b));
+		colorL.setText("r = " + r + " g = " + g+ " b = " + b);
 	}
 }

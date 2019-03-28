@@ -12,7 +12,7 @@
 
 
 
-package com.kitri.awt.design;
+package com.kitri.awt.event;
 
 import java.awt.*;
 

@@ -8,7 +8,7 @@
  * 
  * ÆÐ³Î 2°³
  */
-package com.kitri.awt.design;
+package com.kitri.awt.event;
 
 import java.awt.*;
 

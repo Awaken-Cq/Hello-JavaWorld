@@ -18,58 +18,59 @@ public class ListTest extends Frame {
 	
 	
 	
-//	pC
-	Panel pC = new Panel();
+//	pL
+	Panel pL = new Panel();
 	List listL = new List();
-	
-//	버튼부분 PCC
-	Panel pCC = new Panel();
+	TextField tfL = new TextField();
+//	버튼부분 PC
+	Panel pC = new Panel();
 	Button btR = new Button("▷");
 	Button btRAll = new Button("▶");
 	Button btL = new Button("◁");
 	Button btLAll = new Button("◀");
 	
-
+//	pR
 	List listR = new List();
-	
-	Panel pS = new Panel();
-	TextField tfL = new TextField();
+	Panel pR = new Panel();
 	TextField tfR = new TextField();
 	
-	
+	Font f= new Font("굴림",Font.BOLD,20);
 	
 	public ListTest() {
 		
-		pC.setLayout(new GridLayout(0,3));
-		
-		
-		pC.add(listL);
+		pL.setLayout(new BorderLayout(0,10));
 		listL.setBackground(Color.red);
+		pL.add(listL,"Center");
+		pL.add(tfL,"South");
+		
+		
+		
+		pC.setLayout(new GridLayout(6,1,0,10));
+		pC.add(new Label(""));
+		btR.setFont(f);
+		pC.add(btR);
+		btRAll.setFont(f);
+		pC.add(btRAll);
+		btL.setFont(f);
+		pC.add(btL);
+		btLAll.setFont(f);
+		pC.add(btLAll);
 
-		
-		pC.add(pCC);
-		pCC.setLayout(new GridLayout(4,0,0,50));
-		
-		pCC.add(btR);
-//		btR.setSize(25,25);
-		pCC.add(btRAll);
-//		btRAll.setSize(25,25);
-		pCC.add(btL);
-//		btL.setSize(25,25);
-		pCC.add(btLAll);
-//		btLAll.setSize(25,25);
 	 	
 		
-		pC.add(listR);
+		
+		
+		
+		pR.setLayout(new BorderLayout(0,10));
 		listR.setBackground(Color.blue);
+		pR.add(listR,"Center");
+		pR.add(tfR,"South");
 		
+		setLayout(new GridLayout(1, 3, 10, 0));
+		add(pL);
+		add(pC);
+		add(pR);
 		
-		pS.setLayout(new GridLayout(0,2,100,0));
-		pS.add(tfL);
-		pS.add(tfR);
-		
-		add(pC,"Center");
-		add(pS,"South");
 		
 		setBounds(300,200,300,500);
 		setVisible(true);
