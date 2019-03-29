@@ -6,8 +6,16 @@
  * 
  * 
  * 
- * 
- * 
+ * tooment2@nate.com
+ * 파일 3개 압축 calc, cont, serv
+ * 첨부파일 이름 : calculator_이름.zip
+ * 메일제목 :kitri_노정탁_한자리or여러자리
+ * 내용 c.java
+ * 코딩내용
+ * c.c
+ * 코딩내용
+ * c.s
+ * 코딩내용
  */
 
 
@@ -15,14 +23,18 @@
 package com.kitri.awt.event;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 
-public class Calculator extends Frame {
+public class Calculator extends Frame  {
 //	p
 	Panel pN = new Panel();
 	Panel pC = new Panel();
 	Button exit = new Button("종\t료");
+	
+	CalculatorController calculatorController;
 	
 //	pN
 	Label numL = new Label();
@@ -32,14 +44,17 @@ public class Calculator extends Frame {
 	Button btn[] = new Button[16];
 	String str[] = {"7","8","9","+","4","5","6","-","1","2","3","*","0","C","=","/"};
 	
+
 	
 	public Calculator() {
 		
-
+		calculatorController = new CalculatorController(this);
 
 //		구역할당
 		pN.setLayout(new BorderLayout());
+		numL.setBackground(Color.pink);
 		pN.add(numL,"Center");
+		operL.setBackground(Color.lightGray);		
 		pN.add(operL,"East");
 		
 
@@ -84,6 +99,14 @@ public class Calculator extends Frame {
 //		화면구현
 		setBounds(300, 200, 300, 500);
 		setVisible(true);
+		
+		
+		
+		for (int i = 0; i < len; i++) {
+			btn[i].addActionListener(calculatorController);
+		}
+		exit.addActionListener(calculatorController);
+		
 	}
 		
 	public static void main(String[] args) {
@@ -91,5 +114,7 @@ public class Calculator extends Frame {
 		
 
 	}
+
+	
 
 }

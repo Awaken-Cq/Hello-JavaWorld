@@ -27,7 +27,7 @@ import java.awt.event.*;
  * 
  */
 
-public class ItemTest extends Frame implements ItemListener, ActionListener {
+public class ItemTest extends Frame  {
 
 	Panel pN = new Panel();
 	Panel pS = new Panel();
@@ -46,6 +46,10 @@ public class ItemTest extends Frame implements ItemListener, ActionListener {
 
 	Button exit = new Button("종료");
 
+//	logic부분 선언
+	ItemLogic itemLogic;
+	
+	
 	public ItemTest() {
 
 		pN.setLayout(new GridLayout(2, 3, 10, 0));
@@ -80,15 +84,18 @@ public class ItemTest extends Frame implements ItemListener, ActionListener {
 		setBounds(300, 200, 300, 500);
 		setVisible(true);
 		
-		exit.addActionListener(this);
+//		로직부분에 대한 생성자 생성
+		itemLogic = new ItemLogic(this);
+		
+		exit.addActionListener(itemLogic);
 
-		mor.addItemListener(this);
-		aft.addItemListener(this);
-		eve.addItemListener(this);
-		app.addItemListener(this);
-		bana.addItemListener(this);
-		straw.addItemListener(this);
-		ch.addItemListener(this);
+		mor.addItemListener(itemLogic);
+		aft.addItemListener(itemLogic);
+		eve.addItemListener(itemLogic);
+		app.addItemListener(itemLogic);
+		bana.addItemListener(itemLogic);
+		straw.addItemListener(itemLogic);
+		ch.addItemListener(itemLogic);
 	}
 
 	public static void main(String[] args) {
@@ -96,42 +103,7 @@ public class ItemTest extends Frame implements ItemListener, ActionListener {
 		new ItemTest();
 
 	}
-//	우리가 호출할 수 없는 메소드
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		System.exit(0);
-		
-	}
 
-	@Override
-	public void itemStateChanged(ItemEvent e) {
-		Object ob = e.getSource();
-			if(ob == ch) {
-				String str = ch.getSelectedItem();
-				if(str.equals("아침")) {
-					mor.setState(true);
-				}else if(str.equals("점심")) {
-					aft.setState(true);					
-				}else {
-					eve.setState(true);
-				}
-		}
-		Checkbox sel = cg.getSelectedCheckbox();
-		String selStr = sel.getLabel();
-//		System.out.println(selStr);
-		ta.setText("--- " + selStr + " ---\n");
-//		ta.append("1. 사과 : " + (app.getState()==true? "먹었다" : "안먹었다")+ "\n");
-//		ta.append("2. 바나나 : " + (bana.getState() == true ? "먹었다" : "안먹었다")+ "\n");
-//		ta.append("3. 딸기 : " + (straw.getState() == true ? "먹었다" : "안먹었다")+ "\n");
-//		3삼연산자 코딩 3개가 모두 같은 기능을 하는 코딩이기 때문에 적을 수록 좋다 그렇기 때문에
-//		getState의 반환값이 boolean이고 그 값을 받아서 String을 반환하는 메소드를 만듬
-		ta.append("1. 사과 : " + eat(app.getState())+ "\n");
-		ta.append("2. 바나나 : " + eat(bana.getState())+ "\n");
-		ta.append("3. 딸기 : " + eat(straw.getState())+ "\n");
-		ch.select(selStr);
-	}
-		private String eat(boolean flag) {
-			return flag ? "먹었다" : "안먹었다.";
-		}
+		
 	
 }

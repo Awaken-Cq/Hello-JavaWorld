@@ -45,7 +45,7 @@ public class NumberBaseBall {
 		while (true) {
 			strike = 0;
 			ball = 0;
-			
+
 			System.out.println("숫자입력 : ");
 			int myNum = getNumber();// 149
 			my[0] = myNum / 100;// 1
