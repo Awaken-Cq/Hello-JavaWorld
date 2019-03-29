@@ -44,7 +44,6 @@ public class Calculator extends Frame  {
 	Button btn[] = new Button[16];
 	String str[] = {"7","8","9","+","4","5","6","-","1","2","3","*","0","C","=","/"};
 	
-
 	
 	public Calculator() {
 		

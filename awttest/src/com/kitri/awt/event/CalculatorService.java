@@ -29,82 +29,54 @@ public class CalculatorService {
 		
 	}
 	
-	int num = 0;
 	
-//	public void tran() {
-//		num = Integer.parseInt(calculatorController.numStr);
-//		
-//	}
 
-//	cc.numL.setText(" ");
-	
 	
 	public void calC() {
-		cc.operL.setText(calculatorController.opStr);
-		switch(calculatorController.i) {
-		case 1 : num += Integer.parseInt(calculatorController.numStr);break;
-		case 2 : num -= Integer.parseInt(calculatorController.numStr);break;
-		case 3 : num *= Integer.parseInt(calculatorController.numStr);break;
-		case 4 : num /= Integer.parseInt(calculatorController.numStr);break;
+		
+		switch(calculatorController.opStr) {
+		case "+" : cc.operL.setText(opStr);	break;
+					
+		case "-" : calculator.operL.setText(opStr);	break;
+		
+		case "*" : calculator.operL.setText(opStr);	break;
+		
+		case "/" : calculator.operL.setText(opStr);	break;
+		
+		case "=" : 	break;
+		
+		default : calculatorService.exit();	break;
+			
+			
 		}
-		calculatorController.numStr = "";
+//		cc.operL.setText(calculatorController.opStr);
+//		switch(calculatorController.i) {
+//		case 1 : num += Integer.parseInt(calculatorController.numStr);break;
+//		case 2 : num -= Integer.parseInt(calculatorController.numStr);break;
+//		case 3 : num *= Integer.parseInt(calculatorController.numStr);break;
+//		case 4 : num /= Integer.parseInt(calculatorController.numStr);break;
+//		}
+//		calculatorController.numStr = "";
+	
+	
+	
 		
 		
 	}
-	
 
-	
-//	
-//	public void minus() {
-//		cc.operL.setText(calculatorController.opStr);
-//		num = Integer.parseInt(calculatorController.numStr);
-//		calculatorController.numStr = "";
-//	
-//		
-//	}
-//
-//	public void multi() {
-//		cc.operL.setText(calculatorController.opStr);
-//		num = Integer.parseInt(calculatorController.numStr);
-//		calculatorController.numStr = "";
-//	
-//		
-//}
-//
-//	public void div() {
-//		cc.operL.setText(calculatorController.opStr);
-//		num = Integer.parseInt(calculatorController.numStr);
-//		calculatorController.numStr = "";
-//	
-//		
-//	}
-	
 	public void result() {
 		
-		
 		calculatorController.numStr = String.valueOf(num);
-
-	
-		
-		
-//	public void calc() {
-//		num2 = Integer.parseInt(calculatorController.numStr);
-//		switch(cal) {
-//		case 1 : ;
-//		case 2 : calculatorController.numStr = String.valueOf(num1 - num2);
-//		case 3 : calculatorController.numStr = String.valueOf(num1 * num2);
-//		case 4 : calculatorController.numStr = String.valueOf(num1 / num2);
-//		}
-		
 	}
 
+	
 	public void reset() {
 		calculatorController.numStr = "";
 		calculatorController.opStr = "";
 		cc.numL.setText("");
 		cc.operL.setText("");
 		num = 0;
-		calculatorController.i = 0;
+//		calculatorController.i = 0;
 	}
 	
 	public void exit() {
@@ -113,6 +85,18 @@ public class CalculatorService {
 	}
 	
 	
+	boolean isNumber(String obStr) {
+		boolean flag = true;
+		int num = obStr.charAt(0)-48;
+		if(num < 0 || num > 9 ) {
+			flag = false;
+		}
+		return flag;
+	}
+	
+	
+	
+}	
 	
 	
 	
@@ -122,9 +106,4 @@ public class CalculatorService {
 	
 	
 	
-	
-	
-	
-	
-	
-}
+

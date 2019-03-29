@@ -13,9 +13,11 @@
 package com.kitri.awt.event;
 
 import java.awt.Button;
-import java.awt.TextArea;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 
 public class CalculatorController implements ActionListener {
 
@@ -23,10 +25,12 @@ public class CalculatorController implements ActionListener {
 	Calculator calculator;
 	CalculatorService calculatorService;
 	
+	String obStr = "";
 	String numStr = "";
 	String opStr = "";
-//	TextArea ta;
-	int i = 0;
+//	String total1 = "";
+	String total = "";
+	
 	public CalculatorController(Calculator calculator) {
 		super();
 		this.calculator = calculator;
@@ -38,13 +42,42 @@ public class CalculatorController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object ob = e.getSource();
-		System.out.println(ob);
-
-		if(ob == calculator.exit) {
-			calculatorService.exit();
+		Button b = (Button)ob;
+		obStr = b.getLabel();
+		System.out.println(obStr);
 		
-		}else if (ob == calculator.btn[0]) {
+		
+		
+		System.out.println(numStr);
+		
+		if(calculatorService.isNumber(obStr) == true) {
+			do {
+				numStr += obStr;
+				
+				calculator.numL.setText(numStr);
+			}
+			while (calculatorService.isNumber(obStr) == false);
+		
+		}else if(obStr == "=") {
+			calculatorService.calC();
+		
+		}else{
+			total = numStr;
+			numStr = "";
+			opStr = obStr;
+			calculator.operL.setText(opStr);
+		}
 			
+			
+			
+		
+		
+//	if(calculatorService.isNumber(obStr) == true) {
+//			
+//	}else{
+//			opStr = obStr;
+//	}
+//	System.out.println(calculatorService.isNumber(obStr));
+//		
 	}
-
 }
