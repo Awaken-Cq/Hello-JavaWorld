@@ -28,7 +28,7 @@ public class CalculatorService {
 		cc = calculatorController.calculator;
 		
 	}
-	int  cal = 0;
+	
 	int num = 0;
 	
 //	public void tran() {
@@ -39,47 +39,49 @@ public class CalculatorService {
 //	cc.numL.setText(" ");
 	
 	
-	public void plus() {
+	public void calC() {
 		cc.operL.setText(calculatorController.opStr);
-		num = Integer.parseInt(calculatorController.numStr);
-		calculatorController.numStr = "";
-		
-		cal = 1;
-	}
-
-	
-	public void minus() {
-		cc.operL.setText(calculatorController.opStr);
-		num = Integer.parseInt(calculatorController.numStr);
-		calculatorController.numStr = "";
-	
-		cal = 2;
-	}
-
-	public void multi() {
-		cc.operL.setText(calculatorController.opStr);
-		num = Integer.parseInt(calculatorController.numStr);
-		calculatorController.numStr = "";
-	
-		cal = 3;
-}
-
-	public void div() {
-		cc.operL.setText(calculatorController.opStr);
-		num = Integer.parseInt(calculatorController.numStr);
-		calculatorController.numStr = "";
-	
-		cal = 4;
-	}
-	
-	public void calc() {
-		
-		switch(cal) {
+		switch(calculatorController.i) {
 		case 1 : num += Integer.parseInt(calculatorController.numStr);break;
 		case 2 : num -= Integer.parseInt(calculatorController.numStr);break;
 		case 3 : num *= Integer.parseInt(calculatorController.numStr);break;
 		case 4 : num /= Integer.parseInt(calculatorController.numStr);break;
 		}
+		calculatorController.numStr = "";
+		
+		
+	}
+	
+
+	
+//	
+//	public void minus() {
+//		cc.operL.setText(calculatorController.opStr);
+//		num = Integer.parseInt(calculatorController.numStr);
+//		calculatorController.numStr = "";
+//	
+//		
+//	}
+//
+//	public void multi() {
+//		cc.operL.setText(calculatorController.opStr);
+//		num = Integer.parseInt(calculatorController.numStr);
+//		calculatorController.numStr = "";
+//	
+//		
+//}
+//
+//	public void div() {
+//		cc.operL.setText(calculatorController.opStr);
+//		num = Integer.parseInt(calculatorController.numStr);
+//		calculatorController.numStr = "";
+//	
+//		
+//	}
+	
+	public void result() {
+		
+		
 		calculatorController.numStr = String.valueOf(num);
 
 	
@@ -102,7 +104,7 @@ public class CalculatorService {
 		cc.numL.setText("");
 		cc.operL.setText("");
 		num = 0;
-		cal = 0;
+		calculatorController.i = 0;
 	}
 	
 	public void exit() {
