@@ -2,7 +2,7 @@ package com.kitri.awt.event;
 
 import java.awt.event.*;
 
-public class BaseBallController implements ActionListener, AdjustmentListener {
+public class BaseBallController extends WindowAdapter implements ActionListener, AdjustmentListener {
 
 	BaseBall baseBall;
 	BaseBallService baseBallService;
@@ -37,10 +37,20 @@ public class BaseBallController implements ActionListener, AdjustmentListener {
 		} else if (ob == baseBall.fontColorChooser.ok) {
 			baseBallService.selectColor();
 		}
+		
 	}
+	
 	@Override
 	public void adjustmentValueChanged(AdjustmentEvent e) {
 		baseBallService.changeColor();
 	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		baseBallService.exit();
+		super.windowClosing(e);
+	}
+	
+	
 
 }

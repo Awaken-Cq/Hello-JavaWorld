@@ -1,21 +1,21 @@
 /*1. extends Frame
- * 2. ¼±¾ðºÎ
+ * 2. ï¿½ï¿½ï¿½ï¿½ï¿½
  * nor - cen, ea	/	2Label
- * cen - 16button ¹è¿­»ç¿ë
+ * cen - 16button ï¿½è¿­ï¿½ï¿½ï¿½
  * sou - 1button
  * 
  * 
  * 
  * tooment2@nate.com
- * ÆÄÀÏ 3°³ ¾ÐÃà calc, cont, serv
- * Ã·ºÎÆÄÀÏ ÀÌ¸§ : calculator_ÀÌ¸§.zip
- * ¸ÞÀÏÁ¦¸ñ :kitri_³ëÁ¤Å¹_ÇÑÀÚ¸®or¿©·¯ÀÚ¸®
- * ³»¿ë c.java
- * ÄÚµù³»¿ë
+ * ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ calc, cont, serv
+ * Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ : calculator_ï¿½Ì¸ï¿½.zip
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ :kitri_ï¿½ï¿½ï¿½ï¿½Å¹_ï¿½ï¿½ï¿½Ú¸ï¿½orï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½
+ * ï¿½ï¿½ï¿½ï¿½ c.java
+ * ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
  * c.c
- * ÄÚµù³»¿ë
+ * ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
  * c.s
- * ÄÚµù³»¿ë
+ * ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 
@@ -32,7 +32,7 @@ public class Calculator extends Frame  {
 //	p
 	Panel pN = new Panel();
 	Panel pC = new Panel();
-	Button exit = new Button("Á¾\t·á");
+	Button exit = new Button("Exit");
 	
 	CalculatorController calculatorController;
 	
@@ -49,7 +49,7 @@ public class Calculator extends Frame  {
 		
 		calculatorController = new CalculatorController(this);
 
-//		±¸¿ªÇÒ´ç
+//		ï¿½ï¿½ï¿½ï¿½ï¿½Ò´ï¿½
 		pN.setLayout(new BorderLayout());
 		numL.setBackground(Color.pink);
 		pN.add(numL,"Center");
@@ -63,7 +63,8 @@ public class Calculator extends Frame  {
 		int r = 100;
 		int g = 170;
 		int b = 150;
-		
+	
+//		
 //		int len = str.length;
 //		System.out.println(str.length);
 //		for (int i = 0; i < len; i++) {
@@ -77,7 +78,7 @@ public class Calculator extends Frame  {
 //				b += 7;
 //			
 //				}
-		
+//		
 		
 		int len = btn.length;
 			for (int i = 0; i < len; i++) {
@@ -95,7 +96,8 @@ public class Calculator extends Frame  {
 		add(pC,"Center");
 		add(exit,"South");
 		
-//		È­¸é±¸Çö
+//		È­ï¿½é±¸ï¿½ï¿½
+		setTitle("CalCulator");
 		setBounds(300, 200, 300, 500);
 		setVisible(true);
 		

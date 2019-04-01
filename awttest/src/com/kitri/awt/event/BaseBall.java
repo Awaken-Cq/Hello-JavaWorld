@@ -78,16 +78,18 @@ public class BaseBall extends Frame {
 		fontC.addActionListener(baseBallController);
 		exit.addActionListener(baseBallController);
 		tf.addActionListener(baseBallController);
-
+		this.addWindowListener(baseBallController);
+		
 //		FontColorChooser창 이벤트 등록
 		fontColorChooser.sbR.addAdjustmentListener(baseBallController);
 		fontColorChooser.sbG.addAdjustmentListener(baseBallController);
 		fontColorChooser.sbB.addAdjustmentListener(baseBallController);
-		
 		fontColorChooser.ok.addActionListener(baseBallController);
 		
-		
-		
+//		폰트칼라츄저는 x버튼 눌러을때 종료가 아니라 숨기기를 해야한다.
+//		그러나 여기서 윈도우리스너를 추가하면 프로그램자체가 종료된다.
+//		fontColorChooser.addWindowListener(baseBallController);
+//		여기서 이 소스를 구현하면 안되고 각각의 창에서 구현을 해야한다. -> fontColorChooser
 	}
 
 	public static void main(String[] args) {

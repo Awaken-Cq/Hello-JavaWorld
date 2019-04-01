@@ -1,109 +1,237 @@
-/*±â´É¸Þ¼Òµå
- *1.¼ýÀÚ¹öÆ°À» ´©¸£¸é ¼ýÀÚ°¡ ½áÁö°ÔÇØ¾ßÇÔ.
- *1-1. ¿¬»ê¹öÆ°À» ´©¸£¸é ¿¬»ê¹öÆ°ÀÌ operL¿¡ ½áÁ®¾ßÇÔ.
- *2.¿¬»êÀÚ¹öÆ°À» ´©¸£¸é ´©¸¥ ¿¬»êÀÚ ¹öÆ° Àû¿ë
- *3.¼ýÀÚÀÔ·Â ÇÏ¸é ±âÁ¸ ¼ýÀÚ°¡ Áö¿öÁö°í »õ ¼ýÀÚ ÀÔ·Â
- *4.'='À» ´©¸£¸é ¿¬»ê°á°ú Ãâ·Â. ÀÔ·ÂµÇ¾ú´ø ¿¬»êÀÚ »ç¶óÁü?
- *5.°Å±â¿¡ ´Ù½Ã ¿¬»êÀÚ¸¦ ´©¸£¸é ´©ÀûµÇ¾îÀÖ´ø ¿¬»ê°á°ú¿¡ Ãß°¡ ¿¬»ê
- *6.'C'¹öÆ°À» ´©¸£¸é ±âÁ¸ ÀúÀåµÇ¾îÀÖ´Â ³»¿ë »èÁ¦, µÎ°³ÀÇ tf¿¡ ÀÖ´Â ³»¿ë »èÁ¦.
- *7.Á¾·á¹öÆ°À» ´©¸£¸é Á¾·áv
+/*ï¿½ï¿½É¸Þ¼Òµï¿½
+ *1.ï¿½ï¿½ï¿½Ú¹ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½ï¿½.
+ *1-1. ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ operLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+ *2.ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° ï¿½ï¿½ï¿½ï¿½
+ *3.ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
+ *4.'='ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½. ï¿½Ô·ÂµÇ¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½?
+ *5.ï¿½Å±â¿¡ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½
+ *6.'C'ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Î°ï¿½ï¿½ï¿½ tfï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+ *7.ï¿½ï¿½ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½v
  *
  * 
  * 
  * 
  */
 
-
 package com.kitri.awt.event;
 
 public class CalculatorService {
 
 	CalculatorController calculatorController;
-	
+	String num1;
+	String num2;
+
 	Calculator cc;
-	
+	boolean opFlag = false;
+	boolean eqFlag = false;
+	boolean cFlag = false;
+	double total;
+
 	public CalculatorService(CalculatorController calculatorController) {
 		super();
 		this.calculatorController = calculatorController;
 		cc = calculatorController.calculator;
-		
-	}
-	
-	
 
-	
-	public void calC() {
-		
-		switch(calculatorController.opStr) {
-		case "+" : cc.operL.setText(opStr);	break;
-					
-		case "-" : calculator.operL.setText(opStr);	break;
-		
-		case "*" : calculator.operL.setText(opStr);	break;
-		
-		case "/" : calculator.operL.setText(opStr);	break;
-		
-		case "=" : 	break;
-		
-		default : calculatorService.exit();	break;
-			
-			
-		}
-//		cc.operL.setText(calculatorController.opStr);
-//		switch(calculatorController.i) {
-//		case 1 : num += Integer.parseInt(calculatorController.numStr);break;
-//		case 2 : num -= Integer.parseInt(calculatorController.numStr);break;
-//		case 3 : num *= Integer.parseInt(calculatorController.numStr);break;
-//		case 4 : num /= Integer.parseInt(calculatorController.numStr);break;
-//		}
-//		calculatorController.numStr = "";
-	
-	
-	
-		
-		
 	}
+
+	public void branch() {
+		
+		switch (calculatorController.obStr) {
+
+		case "C":
+			reset();
+			break;
+
+		case "Exit":
+			exit();
+			break;
+
+		case "=":
+			eqFlag = true;
+			flow();
+			calculatorController.opStr = "";
+			cc.operL.setText("");
+			break;
+
+		default:
+			if(calculatorController.numStr == "") {
+				calculatorController.opStr = calculatorController.obStr;
+				cc.operL.setText(calculatorController.opStr);
+				return;
+			}
+			flow();
+			
+			break;
+
+		}
+	}
+
+	public void flow() {
+		
+		opC();
+		
+		if (opFlag == true) {
+			
+			calC();
+			result();
+		}
+
+		calculatorController.opStr = calculatorController.obStr;
+		calculatorController.numStr = "";
+
+	}
+
+	public void opC() {
+
+		if (calculatorController.opStr == "") {
+			
+			cc.operL.setText(calculatorController.obStr);
+			if(eqFlag == true) {
+				opFlag = true;
+				num2 = calculatorController.numStr;
+			}else {
+				opFlag = false;
+				num1 = calculatorController.numStr;
+			}
+		} else {
+			
+			opFlag = true;
+			cc.operL.setText(calculatorController.obStr);
+			num2 = calculatorController.numStr;
+		}
+	}
+
+	public void calC() {
+
+		switch (calculatorController.opStr) {
+
+		case "+":
+			total = Double.parseDouble(num1) + Double.parseDouble(num2);
+			break;
+
+		case "-":
+			total = Double.parseDouble(num1) - Double.parseDouble(num2);
+			break;
+
+		case "*":
+			total = Double.parseDouble(num1) * Double.parseDouble(num2);
+			break;
+
+		case "/":
+			total = Double.parseDouble(num1) / Double.parseDouble(num2);
+			break;
+		}
+
+	}
+
+	/*
+	 * switch(calculatorController.opStr) { case "+" : if(opFlag == true) { // num1
+	 * = calculatorController.numStr;
+	 * 
+	 * calculatorController.numStr = "";
+	 * cc.operL.setText(calculatorController.obStr); }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr) +
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr;
+	 * 
+	 * }break; case "-" : if(opFlag == true) {
+	 * cc.operL.setText(calculatorController.obStr); calculatorController.toStr =
+	 * calculatorController.numStr; calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr) -
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break;
+	 * 
+	 * case "*" : if(opFlag == true) { cc.operL.setText(calculatorController.obStr);
+	 * calculatorController.toStr = calculatorController.numStr;
+	 * calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr)
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break; case "/" :
+	 * if(opFlag == true) { cc.operL.setText(calculatorController.opStr);
+	 * calculatorController.toStr = calculatorController.numStr;
+	 * calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.opStr); num =
+	 * Double.parseDouble(calculatorController.toStr) /
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break; }
+	 */
+
+	/*
+	 * public void calC() { opC(); switch(calculatorController.opStr) { case "+" :
+	 * if(opFlag == true) { // if(calculatorController.numStr != "")
+	 * calculatorController.toStr = calculatorController.numStr;
+	 * calculatorController.numStr = "";
+	 * cc.operL.setText(calculatorController.obStr); }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr) +
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr;
+	 * 
+	 * }break; case "-" : if(opFlag == true) {
+	 * cc.operL.setText(calculatorController.obStr); calculatorController.toStr =
+	 * calculatorController.numStr; calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr) -
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break;
+	 * 
+	 * case "*" : if(opFlag == true) { cc.operL.setText(calculatorController.obStr);
+	 * calculatorController.toStr = calculatorController.numStr;
+	 * calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.obStr); num =
+	 * Double.parseDouble(calculatorController.toStr)
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break; case "/" :
+	 * if(opFlag == true) { cc.operL.setText(calculatorController.opStr);
+	 * calculatorController.toStr = calculatorController.numStr;
+	 * calculatorController.numStr = ""; }else {
+	 * cc.operL.setText(calculatorController.opStr); num =
+	 * Double.parseDouble(calculatorController.toStr) /
+	 * Double.parseDouble(calculatorController.numStr); result();
+	 * calculatorController.opStr = calculatorController.obStr; }break; }
+	 * 
+	 * }
+	 * 
+	 */
 
 	public void result() {
+		calculatorController.numStr = String.valueOf(total);
+		num1 = calculatorController.numStr;
+		cc.numL.setText(calculatorController.numStr);
 		
-		calculatorController.numStr = String.valueOf(num);
 	}
 
-	
 	public void reset() {
+
 		calculatorController.numStr = "";
 		calculatorController.opStr = "";
-		cc.numL.setText("");
-		cc.operL.setText("");
-		num = 0;
-//		calculatorController.i = 0;
+		calculatorController.obStr = "";
+		num1 = "";
+		num2 = "";
+		total = 0.0;
+		cc.numL.setText(" ");
+		cc.operL.setText(" ");
+		opFlag = false;
+		eqFlag = false;
+		cFlag = false;
+
 	}
-	
+
 	public void exit() {
 		System.exit(0);
-		
+
 	}
-	
-	
+
 	boolean isNumber(String obStr) {
 		boolean flag = true;
-		int num = obStr.charAt(0)-48;
-		if(num < 0 || num > 9 ) {
+		int num = obStr.charAt(0) - 48;
+		if (num < 0 || num > 9) {
 			flag = false;
 		}
 		return flag;
 	}
-	
-	
-	
-}	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+}
