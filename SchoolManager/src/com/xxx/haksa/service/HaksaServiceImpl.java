@@ -37,12 +37,13 @@ public class HaksaServiceImpl implements HaksaService {
 	int age = 0;
 	String name = "";
 	String values = "";
+	String s = "";
 
 	public HaksaServiceImpl() {
 		super();
+		in = new BufferedReader(new InputStreamReader(System.in));
 	}
-	
-	
+
 	@Override
 	public void menu() {
 		System.out.println("========== 메뉴 선택 ==========");
@@ -56,30 +57,28 @@ public class HaksaServiceImpl implements HaksaService {
 		System.out.print("번호를 선택해 주세요.. ");
 
 		try {
-			in = new BufferedReader(new InputStreamReader(System.in));
 
 			do {
-//				m = Integer.parseInt(in.readLine());
-				switch (Integer.parseInt(in.readLine())) {
-				case 1:
+				switch ((in.readLine())) {
+				case "1":
 					registerMenu();
 					break;
 
-				case 2:
+				case "2":
 					findNameMenu();
 					break;
 
-				case 3:
+				case "3":
 					deleteMenu();
 					break;
-				case 4:
+				case "4":
 					selectAll();
 					break;
-				case 0:
+				case "0":
 					processExit();
 					break;
 				default:
-					System.out.println("입력이 잘못되었습니다. 번호를 선택해 주세요.. ");
+					System.out.println("입력이 잘못되었습니다. 번호를 선택해 주세요.. ");break;
 				}
 			} while (true);
 
@@ -100,53 +99,45 @@ public class HaksaServiceImpl implements HaksaService {
 		System.out.println("4. 이전메뉴");
 		System.out.print("번호를 선택해 주세요.. ");
 		try {
-			in = new BufferedReader(new InputStreamReader(System.in));
 
-//			m = Integer.parseInt(in.readLine());
 
-			switch (Integer.parseInt(in.readLine())) {
-			case 1:
+			switch (in.readLine()) {
+			case "1":
 				System.out.print("나 이 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				age = Integer.parseInt(in.readLine());
 				System.out.print("이 름 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				name = in.readLine();
 				System.out.print("학 번 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				values = in.readLine();
 				HaksaDto haksaDtoS = new HaksaDto(age, name, 0, values);
 				register(haksaDtoS);
 				break;
 
-			case 2:
+			case "2":
 				System.out.print("나 이 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				age = Integer.parseInt(in.readLine());
 				System.out.print("이 름 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				name = in.readLine();
 				System.out.print("과 목 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
 				values = in.readLine();
 				HaksaDto haksaDtoP = new HaksaDto(age, name, 1, values);
 				register(haksaDtoP);
 				break;
 
-			case 3:
+			case "3":
 				System.out.print("나 이 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
+
 				age = Integer.parseInt(in.readLine());
 				System.out.print("이 름 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
+
 				name = in.readLine();
 				System.out.print("부 서 : ");
-				in = new BufferedReader(new InputStreamReader(System.in));
+
 				values = in.readLine();
 				HaksaDto haksaDtog = new HaksaDto(age, name, 2, values);
 				register(haksaDtog);
 				break;
-			case 4:
+			case "4":
 				menu();
 				break;
 			default:
@@ -171,58 +162,42 @@ public class HaksaServiceImpl implements HaksaService {
 	@Override
 	public void findNameMenu() {
 		job = new String[3];
-		job[0] = "학생";
-		job[1] = "교수";
-		job[2] = "관리자";
+		job[0] = "학 번";
+		job[1] = "과 목";
+		job[2] = "부 서 ";
 		System.out.print("찾을 이름을 입력해 주세요.\n이름 : ");
 
 		try {
-			in = new BufferedReader(new InputStreamReader(System.in));
-			
-			
-			
+
 			name = in.readLine();
 			HaksaDto hsd = findName(name);
-			
-			
-				if (hsd.getKey() == 0) {
-					System.out.println("이름 : " + hsd.getName() + "\t나이 : " + hsd.getAge() + "\t" + job[0] + " : " + hsd.getValue());
-				
-				}else if (hsd.getKey() == 1) {
-					System.out.println("이름 : " + hsd.getName() + "\t나이 : " + hsd.getAge() + "\t" + job[1] + " : " + hsd.getValue());
-							
-				}else if(hsd.getKey() == 2) {
-					System.out.println("이름 : " + hsd.getName() + "\t나이 : " + hsd.getAge() + "\t" + job[2] + " : " + hsd.getValue());
-				}else {
+
+			if (hsd != null) {
+				System.out.println(
+						"나이 : " + hsd.getAge() + "\t이름 : " + hsd.getName() + "\t"  + job[hsd.getKey()] + " : " + hsd.getValue());
+
+			} else{
 				System.out.println("해당하는 이름이 없습니다.");
-				}
-				System.out.println("계속하시려면 1, 종료하시려면 0을 누르시오.");
-				in = new BufferedReader(new InputStreamReader(System.in));
-				if(Integer.parseInt(in.readLine()) == 1) {
-					menu();
-				}else if(Integer.parseInt(in.readLine()) == 0) {
-					processExit();
-				}else {
-					System.out.println("입력이 옳바르지 않습니다.");
-				}
-//			int size = list.size();
-//			for (int i = 0; i < size; i++) {
-//				if (list.get(i).getKey() == 0)
-//					System.out.println("이름 : " + list.get(i).getName() + "\t나이 : " + list.get(i).getAge() + "\t학번 : "
-//							+ list.get(i).getValue());
-//				else if (list.get(i).getKey() == 1)
-//					System.out.println("이름 : " + list.get(i).getName() + "\t나이 : " + list.get(i).getAge() + "\t과목 : "
-//							+ list.get(i).getValue());
-//				else
-//					System.out.println("이름 : " + list.get(i).getName() + "\t나이 : " + list.get(i).getAge() + "\t부서 : "
-//							+ list.get(i).getValue());
-//			}
-//			
-//			System.out.println("찾았습니다.");
+			}
 			
 			
 			
-			
+			System.out.println("계속하시려면 1, 종료하시려면 0을 누르시오.");
+			do {		s = in.readLine(); 
+			if (s.equals("0")) {
+				
+				processExit();break;
+		
+			}else if (s.equals("1")) {
+				
+				menu();break;
+			} else {
+				
+				System.out.print("입력이 옳바르지 않습니다. 다시 입력해주세요.");
+			}
+			} while (true);
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -233,18 +208,49 @@ public class HaksaServiceImpl implements HaksaService {
 		int size = list.size();
 		for (int i = 0; i < size; i++) {
 			if (name.equals(list.get(i).getName())) {
-			m = i; break;
-			}else
-				return null;
+				return list.get(i);
+			}
 		}
-		return list.get(m);
+		return null;
 	}
 
 	@Override
 	public void deleteMenu() {
+		System.out.print("찾을 이름을 입력해 주세요.\n이름 : ");
 
+		
+
+			try {
+				name = in.readLine();
+				HaksaDto hsd = findName(name);
+				if (hsd != null) {
+					list.remove(hsd);
+					System.out.println(name + "님을 삭제하였습니다.");
+				} else{
+					System.out.println("해당하는 이름이 없습니다.");
+				}
+				
+				System.out.println("계속하시려면 1, 종료하시려면 0을 누르시오.");
+				do {	
+				m = Integer.parseInt(in.readLine()); 
+				if (s.equals("0")) {
+					
+					processExit();
+			
+				}else if (s.equals("1")) {
+					
+					menu();
+				} else {
+					
+					System.out.print("입력이 옳바르지 않습니다. 다시 입력해주세요.");
+				}
+				}while(true);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
 	}
-
+	
 	@Override
 	public int delete(String name) {
 		return 0;
@@ -264,11 +270,34 @@ public class HaksaServiceImpl implements HaksaService {
 				System.out.println("이름 : " + list.get(i).getName() + "\t나이 : " + list.get(i).getAge() + "\t부서 : "
 						+ list.get(i).getValue());
 		}
-
+		
+		System.out.println("계속하시려면 1, 종료하시려면 0을 누르시오.");
+try {
+	do {
+		m = Integer.parseInt(in.readLine()); 
+		if (m == 0) {
+			
+			processExit();
+	
+		}else if (m== 1) {
+			
+			menu();
+		} else {
+			
+			System.out.print("입력이 옳바르지 않습니다. 다시 입력해주세요.");
+		}
+	}while(true);
+	} catch (IOException e) {
+		e.printStackTrace();
 	}
+}
+
+
+	
 
 	@Override
 	public void processExit() {
+		System.out.println("종료되었습니다.!!");
 		System.exit(0);
 	}
 
