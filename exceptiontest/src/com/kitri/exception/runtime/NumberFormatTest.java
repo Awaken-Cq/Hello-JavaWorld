@@ -6,7 +6,7 @@ public class NumberFormatTest {
 		
 //		NumberFormatException - Runtime -> logic
 		
-		String s = "123";
+		String s = "1r2r3";
 		try {
 			int x = Integer.parseInt(s);
 			System.out.println(x + 100);

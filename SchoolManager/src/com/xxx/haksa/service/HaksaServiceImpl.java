@@ -38,7 +38,9 @@ public class HaksaServiceImpl implements HaksaService {
 	String name = "";
 	String values = "";
 	String s = "";
-
+	Boolean flag;
+	
+	
 	public HaksaServiceImpl() {
 		super();
 		in = new BufferedReader(new InputStreamReader(System.in));
@@ -103,8 +105,17 @@ public class HaksaServiceImpl implements HaksaService {
 
 			switch (in.readLine()) {
 			case "1":
+				
 				System.out.print("나 이 : ");
-				age = Integer.parseInt(in.readLine());
+				s = in.readLine();
+				
+				if(isNum(s)) {
+				age = Integer.parseInt(s);
+				}else {
+					System.out.println("숫자가 아닙니다. 이전메뉴로 돌아갑니다.");
+					registerMenu();
+				}
+				
 				System.out.print("이 름 : ");
 				name = in.readLine();
 				System.out.print("학 번 : ");
@@ -301,4 +312,18 @@ try {
 		System.exit(0);
 	}
 
+	public Boolean isNum(String s) {
+			flag = true;
+		int len = s.length();
+		for(int i = 0; i< len ; i++) {
+			m = s.charAt(i)-48;
+			if(m < 0 || m > 9)
+				flag = false;
+		}
+		
+		return flag;
+		
+		
+	}
+	
 }
